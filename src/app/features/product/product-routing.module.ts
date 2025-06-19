@@ -4,12 +4,13 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { authGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   { path: "", component: ProductListComponent },
   { path: "detail/:id", component: ProductDetailComponent },
   { path: "cart", component: CartComponent },
-  { path: "add-product", component: AddProductComponent },
+  { path: "add-product", canActivate: [authGuard] , component: AddProductComponent },
 ];
 
 @NgModule({
